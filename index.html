@@ -4,7 +4,7 @@
     <title>Amtrak needs its own tracks!</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet"> 
     <style>
-div{
+.cutout{
     font-family: 'Roboto', sans-serif;
     margin: 1em;
     color: #555555;
@@ -13,23 +13,58 @@ div{
 h1{
     font-weight: 900;
 }
-#background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    overflow: hidden;
-    z-index: -1;
-} 
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    height: 300%;
+    top: -100%;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+    width: 300%;
+    left: -100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .fullscreen-bg {
+    background: url('./9ed0a6ac93187ba7aa4b7f134a00780b.jpg') center center / cover no-repeat;
+  }
+
+  .fullscreen-bg__video {
+    display: none;
+  }
+}
 </style>
 </head>
 <body>
-<video autoplay loop muted poster="./9ed0a6ac93187ba7aa4b7f134a00780b.jpg" id="background">
+    <div class="fullscreen-bg">
+<video autoplay loop muted poster="./9ed0a6ac93187ba7aa4b7f134a00780b.jpg" class="fullscreen-bg__video">
    <source src="./cf5d210c0f69c435f55a12df0eae2297.mp4" type="video/mp4">
    <source src="./e2a764f520f2488b99708482ead7e048.webm" type="video/webm">
    <source src="./48b38686a2c3b3979a679698bd6b0f13.ogv" type="video/ogg">
 </video>
-<div>
+</div>
+<div class=cutout>
 <h1>
     Amtrak needs its own tracks!
 </h1>
